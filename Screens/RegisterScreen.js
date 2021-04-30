@@ -19,7 +19,7 @@ const RegisterScreen = ({navigation}) => {
     const register = () => {
       firebase.auth().createUserWithEmailAndPassword(email,password)
       .then(authUser => {
-          authUser.user,update({
+          authUser.user.updateProfile({
               displayName: name,
               photoURL: imageUrl || "https://cencup.com/wp-content/uploads/2019/07/avatar-placeholder.png"
           });
@@ -72,7 +72,8 @@ const styles = StyleSheet.create({
     },
     button: {
       width: 200,
-      marginTop: 10
+      marginTop: 10,
+      marginBottom: -100
     },
     inputContainer: {
        width: 300

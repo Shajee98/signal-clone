@@ -10,17 +10,19 @@ const LoginScreen = ({navigation}) => {
     const [password,setPassword] = useState('');
     
 useEffect(() => {
-  const unsubscribe = firebase.auth().onAuthStateChanged((authUser => {
+  const unsubscribe = firebase.auth().onAuthStateChanged((authUser) => {
+      console.log(authUser);
       if (authUser)
       {
-          navigation.replace('Home')
+        navigation.replace('Home')
+        //console.log(authUser);
       }
-  }));
-  return unsubscribe;
-},[])
+  });
+  return () =>  {unsubscribe};
+},[]);
 
     const SignIn = () => {
-
+       firebase.auth().signInWithEmailAndPassword(email, password).catch((error) => alert(error));
     }
     return (
         <KeyboardAvoidingView behavior={'padding'} style={styles.container}>
@@ -31,8 +33,21 @@ useEffect(() => {
             style={{width: 200, height: 200, position: 'relative'}}
             />
             <View style={styles.inputContainer}>
-                <Input placeholder="Email" autoFocus type="email" value={email} onChangeText={(text) => setEmail(text)}/>
-                <Input placeholder="Password" secureTextEntry type="password" value={password} onChangeText={(text) => setPassword(text)}/>
+                <Input 
+                placeholder="Email" 
+                autoFocus 
+                type="email" 
+                value={email} 
+                onChangeText={(text) => setEmail(text)}
+                />
+                <Input 
+                placeholder="Password" 
+                secureTextEntry 
+                type="password" 
+                value={password} 
+                onChangeText={(text) => setPassword(text)}
+                onSubmitEditing={SignIn}
+                />
             </View>
             <Button title='Login' onPress={SignIn} containerStyle={styles.button}/>
             <Button title='Register' onPress={() => navigation.navigate('Register')} type='outline' containerStyle={styles.button}/>
@@ -52,7 +67,8 @@ const styles = StyleSheet.create({
       backgroundColor: 'white'
     },
     inputContainer: {
-       width: 300
+       width: 300,
+       marginTop: -150
     },
     button: {
      width: 200,
