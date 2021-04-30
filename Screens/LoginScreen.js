@@ -23,7 +23,7 @@ useEffect(() => {
 
     }
     return (
-        <KeyboardAvoidingView behavior={Platform.OS === "android" ? "padding" : "height"} style={styles.container}>
+        <KeyboardAvoidingView behavior={'padding'} style={styles.container}>
             <StatusBar style='light'/>
             <Image source={{
                 uri: "https://blog.mozilla.org/internetcitizen/files/2018/08/signal-logo.png",

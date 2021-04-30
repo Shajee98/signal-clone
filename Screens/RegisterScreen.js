@@ -26,7 +26,7 @@ const RegisterScreen = ({navigation}) => {
       }).catch((error) => alert(error.message))
     }
     return (
-        <KeyboardAvoidingView behavior={Platform.OS === "android" ? "padding" : "height"} enabled style={styles.container}>
+        <KeyboardAvoidingView behavior={'padding'} style={styles.container}>
             <StatusBar style="light"/>
             <Text h3 style={{marginBottom: 50}}>Create a Signal Account</Text>
             <View style={styles.inputContainer}>
