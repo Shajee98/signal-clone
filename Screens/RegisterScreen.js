@@ -51,6 +51,7 @@ const RegisterScreen = ({navigation}) => {
                 onSubmitEditing={register}/>
             </View>
             <Button 
+             raised
              containerStyle={styles.button}
              title="Register"
              onPress={register}
