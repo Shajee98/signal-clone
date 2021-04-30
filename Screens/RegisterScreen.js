@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar'
 import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { KeyboardAvoidingView, View, StyleSheet, Platform} from 'react-native'
 import { Button, Input, Text } from 'react-native-elements'
-import auth from '../firbase';
+import {auth, firebase} from '../firbase';
 
 const RegisterScreen = ({navigation}) => {
     const [name, setName] = useState('');
@@ -17,7 +17,7 @@ const RegisterScreen = ({navigation}) => {
     },[navigation]);
     
     const register = () => {
-      auth.createUserwithEmailandPassword(email,password)
+      firebase.auth().createUserWithEmailAndPassword(email,password)
       .then(authUser => {
           authUser.user,update({
               displayName: name,
