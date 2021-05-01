@@ -11,19 +11,17 @@ const LoginScreen = ({navigation}) => {
     
 useEffect(() => {
   const unsubscribe = firebase.auth().onAuthStateChanged((authUser) => {
-      console.log(authUser);
       if (authUser)
       {
         navigation.replace('Home')
-        //console.log(authUser);
       }
   });
-  return () =>  {unsubscribe};
+   unsubscribe;
 },[]);
 
     const SignIn = () => {
        firebase.auth().signInWithEmailAndPassword(email, password).catch((error) => alert(error));
-    }
+    };
     return (
         <KeyboardAvoidingView behavior={'padding'} style={styles.container}>
             <StatusBar style='light'/>
@@ -49,8 +47,8 @@ useEffect(() => {
                 onSubmitEditing={SignIn}
                 />
             </View>
-            <Button title='Login' onPress={SignIn} containerStyle={styles.button}/>
-            <Button title='Register' onPress={() => navigation.navigate('Register')} type='outline' containerStyle={styles.button}/>
+            <Button raised title='Login' onPress={SignIn} containerStyle={styles.button}/>
+            <Button raised title='Register' onPress={() => navigation.navigate('Register')} type='outline' containerStyle={styles.button}/>
 
         </KeyboardAvoidingView>
     )
