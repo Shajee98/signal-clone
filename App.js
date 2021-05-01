@@ -7,6 +7,7 @@ import LoginScreen from './Screens/LoginScreen';
 import RegisterScreen from './Screens/RegisterScreen';
 import HomeScreen from './Screens/HomeScreen';
 import AddChatScreen from './Screens/AddChatScreen';
+import ChatScreen from './Screens/ChatScreen';
 
 const Stack = createStackNavigator();
 const globalScreenOptions = {
