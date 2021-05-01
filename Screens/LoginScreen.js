@@ -16,7 +16,7 @@ useEffect(() => {
         navigation.replace('Home')
       }
   });
-   unsubscribe;
+   return unsubscribe;
 },[]);
 
     const SignIn = () => {

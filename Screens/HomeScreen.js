@@ -1,5 +1,5 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react'
-import { StyleSheet, View, ScrollView, SafeAreaView, TouchableOpacity, LogBox } from 'react-native'
+import { StyleSheet, View, ScrollView, SafeAreaView, TouchableOpacity } from 'react-native'
 import CustomListItem from '../components/CustomListItem'
 import { Avatar } from 'react-native-elements'
 import { AntDesign, SimpleLineIcons } from '@expo/vector-icons'
@@ -7,7 +7,6 @@ import {auth, firebase, db} from '../firbase';
 
 
 const HomeScreen = ({navigation}) => {
-    LogBox.ignoreLogs(['Setting a timer']);
     const [chats, setChats] = useState([]);
 
     const signOut = () => {

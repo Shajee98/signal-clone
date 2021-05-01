@@ -13,8 +13,8 @@ const AddChatScreen = ({navigation}) => {
         })
     },[navigation]);
 
-    const createChat = async () => {
-        await db.collection('chats').add({
+    const createChat = () => {
+            db.collection('chats').add({
             ChatName: input
         }).then(() => {
             navigation.goBack();
@@ -29,7 +29,7 @@ const AddChatScreen = ({navigation}) => {
                leftIcon={
                    <Icon name="wechat" type="antdesign" size={24} color="grey"/>
                }/>
-               <Button title="Create new Chat" onPress={createChat} /> 
+               <Button disabled={!input} title="Create new Chat" onPress={createChat} /> 
         </View>
     )
 }
